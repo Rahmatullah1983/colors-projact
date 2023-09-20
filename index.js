@@ -1,7 +1,7 @@
 //Global selectors and vaiables
 const colorDivs = document.querySelectorAll('.color');
 const generateBtn = document.querySelector('.generate');
-const sliders = document.querySelectorAll('.input[type="range"]');
+const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll('.color h2');
 
 
@@ -9,6 +9,11 @@ const currentHexes = document.querySelectorAll('.color h2');
 
 sliders.forEach(slider => {
     slider.addEventListener("input", hslControls);
+});
+colorDivs.forEach((div,index) =>{
+    div.addEventListener("change", () =>{
+        updateTextUI(index);
+    });
 });
 //functions
 
@@ -43,7 +48,7 @@ function randomColors(){
         checkTextContrast(randomColor,hexText );
         //Initial colrize Sliders
        const color= chroma(randomColor);
-       const sliders = div.querySelectorAll(".sliders input");
+       const sliders = div.querySelectorAll('.sliders input');
        const hue = sliders[0];
        const  brightness= sliders[1];
        const saturation = sliders[2];
@@ -74,7 +79,6 @@ hue.style.backgroundImage =`linear-gradient(to right,rgb(204,75,75),rgb(204,204,
 
 }
 function hslControls(e) {
-    console.log(e);
     const index = 
     e.target.getAttribute("data-bright")||
     e.target.getAttribute("data-sat")||
@@ -85,13 +89,24 @@ function hslControls(e) {
     const brightness = sliders[1];
     const saturation = sliders[2];
 
-    const bgColor = colorDivs[index].querySelector('h2'.innerText);
-    console.log(bgColor);
+    const bgColor = colorDivs[index].querySelector('h2').innerText;
     let color = chroma(bgColor)
     .set('hsl.s',saturation.value)
     .set('hsl.l',brightness.value)
     .set('hsl.h',hue.value);
     colorDivs[index].style.backgroundColor=color;
+}
+function updateTextUI(index) {
+    const activeDiv = colorDivs[index];
+    const color = chroma(activeDiv.style.backgroundColor);
+    const textHex = activeDiv.querySelector('h2');
+    const icons = activeDiv.querySelectorAll('.controls button');
+    textHex.innerText = color.hex();
+    //check contrast
+    checkTextContrast(color, textHex);
+    for (icon of icons){
+        checkTextContrast(color, icon);
+    }
 }
 randomColors();
 
