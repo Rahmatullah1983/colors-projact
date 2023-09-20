@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Montserat",  sans-serif;
+    color: rgb(52, 51, 51);
+    
+}
+path,
+1,
+svg{
+    pointer-events: none;
+}
+.colors{
+    min-height: 80vh;
+    display: flex;
+    color: rgb(212, 212, 212);
+    position: relative;
+    
+}
+.color{
+    height:50vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    
+}
+.color h2{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.sliders{
+   /* opacity: 0;*/
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0%;
+    background: rgb(129, 85, 85);
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding: 1rem;
+    width: 80%;
+    /*we are adding an adjustment class*/
+    transform: translateY(100px);
+    transition: all 0.5s ease in out;
+/*pointer-events: none;*/
+}
+.sliders-active{
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: all;
+}
+.sliders button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;    
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border: none;
+    background-color: rgb(17, 16, 16);
+    color: white;
+    cursor: pointer;
+    font-weight: bolders;
+}
+.controls{
+    display: flex;
+    flex-direction: column;
+}
+.panel{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+.panel button{
+    font-size: 1.2rem;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgb(43, 20, 20);
+    color: white;
+    border-radius: 1rem;
+
+}
+.panel p{
+    font-size: 1.2rem;
+}
+.library-panel,.genrate-panel,.save-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.adjust,.lock{
+    font-size: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+input[type="range"]{
+    -webkit-appearance :none;
+    margin:0.3rem 0rem;
+    width:100%;
+    position: relative;
+    border-radius:1rem;
+    cursor: pointer;
+}
