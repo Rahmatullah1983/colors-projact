@@ -74,7 +74,7 @@ hue.style.backgroundImage =`linear-gradient(to right,rgb(204,75,75),rgb(204,204,
 
 }
 function hslControls(e) {
-    
+    console.log(e);
     const index = 
     e.target.getAttribute("data-bright")||
     e.target.getAttribute("data-sat")||
