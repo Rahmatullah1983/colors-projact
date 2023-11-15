@@ -275,7 +275,14 @@ function savePalette(e) {
     });
 
     // Generate Object
-    const paletteNr = savedPalettes.length; // Increment the paletteNr here
+    //const paletteNr = savedPalettes.length; // Increment the paletteNr here
+    let paletteNr;
+    const paletteObjects =JSON.parse(localStorage.getItem("palette"));
+    if(paletteObjects){
+        paletteNr = paletteObjects.length;
+    }else{
+        paletteNr = savedPalettes.length;
+    }
     const paletteObj = { name, colors, nr: paletteNr };
         savedPalettes.push(paletteObj);
         
@@ -399,5 +406,6 @@ function getLocal() {
 getLocal();
 
 randomColors();
+
 
 
